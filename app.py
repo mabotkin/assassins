@@ -11,11 +11,11 @@ PASSWORD = getpass.getpass()
 VERBOSE = True
 EMAIL = False #safety switch
 
-WEAPON = "The weapon is an index card (or paper of similar size) with your target's name written LEGIBLY on the index card (i.e., if the mods can't read it, it doesn't count).  You may carry as many index cards as you like with as many different names as you wish, but must use ONLY the card with your target's name to assassinate them (i.e., you cannot touch a stack of cards to them)."
-IMMUNITY = "The immunity is holding a fruit.  Here is the list of acceptable fruits: Apple, Banana, Orange, Mandarin, Watermelon, Melon, Coconut, Avocado, Lemon, Lime, Kiwi, Grapefruit, Apricot, Peach, Pitaya, Pear, and Tomato."
+WEAPON = open("config/weapon.txt").read()
+IMMUNITY = open("config/immunity.txt").read()
 
 tic = time()
-fin = open("names.txt").read().splitlines()
+fin = open("config/names.txt").read().splitlines()
 for i in range(len(fin)):
 	fin[i] = fin[i].split("|")
 
@@ -24,7 +24,7 @@ for i in range(int(len(fin)**3)):
 	k = random.randint(0,len(fin)-1)
 	fin[j], fin[k] = fin[k], fin[j]
 
-fout = open("out.txt","w")
+fout = open("config/out.txt","w")
 for i in fin:
 	i[0] = i[0].strip()
 	i[1] = i[1].strip()
@@ -51,7 +51,7 @@ for i in range(len(fin)):
 				print("Message sent to", fin[i][0])
 		except:
 			print("Error sending message to", fin[i][0])
-mods = open("mod.txt").read().splitlines()
+mods = open("config/mod.txt").read().splitlines()
 for i in mods:
 	addr = USERNAME + '@tjhsst.edu'
 	message = "Hello Moderator,\n\nHere is the assassins targeting list:\n\n"
