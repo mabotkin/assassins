@@ -4,12 +4,12 @@ import smtplib
 import random
 from time import time
 
-USERNAME = "2017awang"
+USERNAME = "vmtassassins@gmail.com"
 print("Enter password for " + USERNAME)
 PASSWORD = getpass.getpass()
 
 VERBOSE = True
-EMAIL = False #safety switch
+EMAIL = True #safety switch
 
 WEAPON = open("config/weapon.txt").read()
 IMMUNITY = open("config/immunity.txt").read()
@@ -21,14 +21,14 @@ for i in range(len(fin)):
 
 random.shuffle(fin)
 
-fout = open("config/out.txt","w")
+fout = open("out.txt","w")
 for i in fin:
 	i[0] = i[0].strip()
 	i[1] = i[1].strip()
 	fout.write(i[0] + "\n")
 fout.close()
 
-s = smtplib.SMTP_SSL('smtp.tjhsst.edu')
+s = smtplib.SMTP_SSL('smtp.gmail.com')
 s.login(USERNAME, PASSWORD)
 
 for i in range(len(fin)):
