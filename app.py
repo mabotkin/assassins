@@ -9,7 +9,7 @@ print("Enter password for " + USERNAME)
 PASSWORD = getpass.getpass()
 
 VERBOSE = True
-EMAIL = True #safety switch
+EMAIL = False #safety switch
 
 WEAPON = open("config/weapon.txt").read()
 IMMUNITY = open("config/immunity.txt").read()
